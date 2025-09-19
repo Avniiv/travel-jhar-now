@@ -2,41 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Johar Jharkhand Design System - Reflecting tribal heritage and natural beauty */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Brand Colors - Inspired by Jharkhand's forests and tribal culture */
+    --primary: 88 56% 18%;              /* Deep Forest Green #2D5016 */
+    --primary-foreground: 60 100% 95%;  /* Warm white for contrast */
+    --primary-light: 88 45% 35%;        /* Lighter forest green */
+    --primary-glow: 88 35% 55%;         /* Forest glow for accents */
 
+    --secondary: 30 61% 53%;            /* Earthy Terracotta #CD853F */
+    --secondary-foreground: 60 100% 95%;
+    --secondary-light: 30 45% 65%;      /* Lighter terracotta */
+    --secondary-dark: 30 70% 40%;       /* Darker terracotta */
+
+    --accent: 51 100% 50%;              /* Golden Yellow #FFD700 */
+    --accent-foreground: 88 56% 18%;    /* Forest green on gold */
+    --accent-glow: 51 85% 65%;          /* Soft golden glow */
+    --accent-warm: 45 95% 55%;          /* Warm golden variant */
+
+    /* Cultural Color Extensions */
+    --tribal-red: 0 70% 45%;            /* Traditional tribal red */
+    --earth-brown: 25 40% 30%;          /* Rich earth brown */
+    --nature-sage: 95 25% 45%;          /* Sage green for balance */
+
+    /* Surface Colors */
+    --background: 60 15% 97%;           /* Warm off-white */
+    --foreground: 88 45% 15%;           /* Dark forest for text */
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 88 45% 15%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 88 45% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --muted: 60 10% 92%;                /* Soft warm gray */
+    --muted-foreground: 88 25% 35%;     /* Muted forest */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --border: 60 15% 85%;               /* Subtle warm border */
+    --input: 60 15% 90%;                /* Input background */
+    --ring: 88 56% 18%;                 /* Focus ring - primary */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Gradients for Visual Impact */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-warm: linear-gradient(180deg, hsl(var(--accent-warm)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-forest: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--nature-sage)) 100%);
+    
+    /* Shadows with Cultural Depth */
+    --shadow-cultural: 0 10px 30px -5px hsl(var(--primary) / 0.15);
+    --shadow-warm: 0 8px 25px -3px hsl(var(--secondary) / 0.2);
+    --shadow-glow: 0 0 40px hsl(var(--accent) / 0.3);
+    --shadow-subtle: 0 2px 8px -2px hsl(var(--primary) / 0.08);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Animation Variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --animation-float: float 3s ease-in-out infinite;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -92,6 +120,76 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Cultural Animation Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Dark mode adaptations for Jharkhand theme */
+  .dark {
+    --primary: 88 45% 25%;              /* Lighter forest in dark mode */
+    --primary-foreground: 60 100% 95%;
+    --primary-light: 88 35% 40%;
+    --primary-glow: 88 25% 60%;
+
+    --secondary: 30 55% 40%;            /* Deeper terracotta in dark */
+    --secondary-foreground: 60 100% 95%;
+    --secondary-light: 30 40% 55%;
+    --secondary-dark: 30 65% 30%;
+
+    --accent: 51 85% 45%;               /* Muted gold in dark */
+    --accent-foreground: 60 100% 95%;
+    --accent-glow: 51 70% 60%;
+    --accent-warm: 45 80% 50%;
+
+    --background: 88 15% 8%;            /* Deep forest background */
+    --foreground: 60 15% 90%;           /* Light warm text */
+    
+    --card: 88 15% 10%;
+    --card-foreground: 60 15% 90%;
+    
+    --popover: 88 15% 10%;
+    --popover-foreground: 60 15% 90%;
+
+    --muted: 88 10% 15%;
+    --muted-foreground: 60 8% 65%;
+
+    --border: 88 15% 20%;
+    --input: 88 15% 15%;
+    --ring: 88 45% 35%;
+
+    /* Dark mode gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-warm: linear-gradient(180deg, hsl(var(--accent-warm)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-forest: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--nature-sage)) 100%);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 }
 
 @layer base {
@@ -101,5 +199,69 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Typography with cultural flair */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "lnum" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+@layer components {
+  /* Cultural pattern overlay */
+  .tribal-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--accent) / 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.1) 1px, transparent 1px);
+    background-size: 40px 40px, 20px 20px;
+  }
+
+  /* Animated background */
+  .animated-bg {
+    background: var(--gradient-hero);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-md bg-background/80 border border-border/50;
+  }
+
+  /* Cultural card styling */
+  .cultural-card {
+    @apply bg-card border border-border rounded-xl shadow-[var(--shadow-cultural)] hover:shadow-[var(--shadow-warm)] transition-all duration-300;
+  }
+
+  /* Emergency button styling */
+  .emergency-btn {
+    @apply bg-destructive hover:bg-destructive/90 text-destructive-foreground font-semibold;
+    box-shadow: 0 0 20px hsl(var(--destructive) / 0.4);
   }
 }
