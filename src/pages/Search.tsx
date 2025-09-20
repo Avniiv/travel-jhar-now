@@ -295,11 +295,18 @@ const Search = () => {
                               )}
                             </div>
                             
-                            <Button asChild>
-                              <Link to={`${getRoutePrefix()}/${item.id}`}>
-                                View Details
-                              </Link>
-                            </Button>
+                            <div className="flex gap-2">
+                              <Button asChild variant="outline" size="sm">
+                                <Link to={`${getRoutePrefix()}/${item.id}`}>
+                                  View Details
+                                </Link>
+                              </Button>
+                              <Button asChild size="sm">
+                                <Link to={`/book/${type}/${item.id}?step=1`}>
+                                  Book Now
+                                </Link>
+                              </Button>
+                            </div>
                           </div>
                         </CardContent>
                       </div>

@@ -16,6 +16,8 @@ import Contact from "./pages/Contact";
 import Destinations from "./pages/Destinations";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import BookingFlow from "./pages/BookingFlow";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -50,13 +52,16 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           
+          {/* Booking Flow */}
+          <Route path="/book/:type/:id" element={<BookingFlow />} />
+          
           {/* Auth */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Login />} />
           
-          {/* Dashboard (requires backend) */}
-          <Route path="/dashboard" element={<Destinations />} />
-          <Route path="/dashboard/*" element={<Destinations />} />
+          {/* Dashboard */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
