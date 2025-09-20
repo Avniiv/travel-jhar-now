@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { MapPin, Star, Clock, Users, Filter, Grid, List, Map } from 'lucide-react';
-import { destinations, hotels, guides, vendors } from '@/data/mockData';
+import { destinations, hotels, guides, vendors, Destination, Hotel, Guide, Vendor } from '@/data/mockData';
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -21,10 +21,10 @@ const Search = () => {
   const [priceRange, setPriceRange] = useState([0, 5000]);
   const [selectedLocation, setSelectedLocation] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list' | 'map'>('grid');
-  const [filteredResults, setFilteredResults] = useState<(Destination | Hotel | Guide | Vendor)[]>([]);
+  const [filteredResults, setFilteredResults] = useState<any[]>([]);
 
   // Get data based on type
-  const getData = () => {
+  const getData = (): any[] => {
     switch (type) {
       case 'hotels': return hotels;
       case 'guides': return guides;
@@ -35,7 +35,7 @@ const Search = () => {
 
   // Filter and sort results
   useEffect(() => {
-    let data = getData();
+    let data: any[] = getData();
     
     // Filter by search term
     if (searchTerm) {
@@ -53,8 +53,8 @@ const Search = () => {
 
     // Filter by price range
     data = data.filter(item => {
-      const price = type === 'hotels' ? item.pricePerNight : 
-                   type === 'guides' ? item.pricePerDay : item.price;
+      const price = type === 'hotels' ? (item as Hotel).pricePerNight : 
+                   type === 'guides' ? (item as Guide).pricePerDay : (item as Destination | Vendor).price;
       return price >= priceRange[0] && price <= priceRange[1];
     });
 
@@ -62,16 +62,16 @@ const Search = () => {
     data.sort((a: any, b: any) => {
       switch (sortBy) {
         case 'price_low':
-          const priceA = type === 'hotels' ? a.pricePerNight : 
-                        type === 'guides' ? a.pricePerDay : a.price;
-          const priceB = type === 'hotels' ? b.pricePerNight : 
-                        type === 'guides' ? b.pricePerDay : b.price;
+          const priceA = type === 'hotels' ? (a as Hotel).pricePerNight : 
+                        type === 'guides' ? (a as Guide).pricePerDay : (a as Destination | Vendor).price;
+          const priceB = type === 'hotels' ? (b as Hotel).pricePerNight : 
+                        type === 'guides' ? (b as Guide).pricePerDay : (b as Destination | Vendor).price;
           return priceA - priceB;
         case 'price_high':
-          const priceA2 = type === 'hotels' ? a.pricePerNight : 
-                         type === 'guides' ? a.pricePerDay : a.price;
-          const priceB2 = type === 'hotels' ? b.pricePerNight : 
-                         type === 'guides' ? b.pricePerDay : b.price;
+          const priceA2 = type === 'hotels' ? (a as Hotel).pricePerNight : 
+                         type === 'guides' ? (a as Guide).pricePerDay : (a as Destination | Vendor).price;
+          const priceB2 = type === 'hotels' ? (b as Hotel).pricePerNight : 
+                         type === 'guides' ? (b as Guide).pricePerDay : (b as Destination | Vendor).price;
           return priceB2 - priceA2;
         case 'rating':
         default:
