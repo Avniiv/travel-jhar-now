@@ -14,6 +14,7 @@ import Itineraries from "./pages/Itineraries";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Destinations from "./pages/Destinations";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import BookingFlow from "./pages/BookingFlow";
@@ -32,7 +33,7 @@ const App = () => (
           
           {/* Search and Listings */}
           <Route path="/search" element={<Search />} />
-          <Route path="/destinations" element={<Search />} />
+          <Route path="/destinations" element={<Destinations />} />
           <Route path="/hotels" element={<Search />} />
           <Route path="/guides" element={<Search />} />
           
@@ -44,11 +45,9 @@ const App = () => (
           {/* Marketplace */}
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/vendor/:id" element={<VendorDetail />} />
-          <Route path="/vendor/apply" element={<Destinations />} />
           
           {/* Other Pages */}
           <Route path="/itineraries" element={<Itineraries />} />
-          <Route path="/itinerary/:id" element={<Destinations />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           
@@ -57,7 +56,7 @@ const App = () => (
           
           {/* Auth */}
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           
           {/* Dashboard */}
           <Route path="/dashboard" element={<Dashboard />} />
