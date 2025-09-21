@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider';
 import { MapPin, Star, Clock, Users, Filter, Grid, List, Map } from 'lucide-react';
 import { destinations, hotels, guides, vendors, Destination, Hotel, Guide, Vendor } from '@/data/mockData';
+import { FavoriteButton } from '@/components/FavoriteButton';
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -91,6 +92,12 @@ const Search = () => {
     if (type === 'hotels') return `₹${(item as Hotel).pricePerNight}/night`;
     if (type === 'guides') return `₹${(item as Guide).pricePerDay}/day`;
     return `₹${(item as Destination | Vendor).price}`;
+  };
+
+  const getNumericPrice = (item: any) => {
+    if (type === 'hotels') return (item as Hotel).pricePerNight;
+    if (type === 'guides') return (item as Guide).pricePerDay;
+    return (item as Destination | Vendor).price;
   };
 
   const getRoutePrefix = () => {
@@ -247,7 +254,20 @@ const Search = () => {
                             alt={item.name}
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                           />
-                          <div className="absolute top-4 right-4">
+                          <div className="absolute top-4 right-4 flex gap-2">
+                            <FavoriteButton 
+                              item={{
+                                id: item.id,
+                                type: type as any,
+                                name: item.name,
+                                image: item.image,
+                                price: getNumericPrice(item),
+                                rating: item.rating,
+                                location: item.location
+                              }}
+                              variant="ghost"
+                              className="bg-background/80 backdrop-blur-sm hover:bg-background/90"
+                            />
                             <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
                               <Star className="h-3 w-3 mr-1 text-yellow-500 fill-current" />
                               {item.rating}
