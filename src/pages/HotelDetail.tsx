@@ -9,6 +9,7 @@ import { Separator } from '@/components/ui/separator';
 import { Calendar } from '@/components/ui/calendar';
 import { MapPin, Star, Wifi, Car, Coffee, Utensils, Waves, Heart, Share2, Phone, Mail } from 'lucide-react';
 import { hotels, reviews } from '@/data/mockData';
+import { BackButton } from '@/components/BackButton';
 
 const HotelDetail = () => {
   const { id } = useParams();
@@ -50,6 +51,9 @@ const HotelDetail = () => {
       
       <main className="py-20">
         <div className="container mx-auto px-4">
+          <div className="mb-6">
+            <BackButton to="/search?type=hotels" label="Back to Hotels" />
+          </div>
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
             <Link to="/" className="hover:text-primary">Home</Link>

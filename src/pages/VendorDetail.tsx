@@ -9,6 +9,7 @@ import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Star, Heart, Share2, Phone, Mail, User, Clock, CheckCircle, Home, Palette, Sparkles } from 'lucide-react';
 import { vendors, reviews } from '@/data/mockData';
+import { BackButton } from '@/components/BackButton';
 
 const VendorDetail = () => {
   const { id } = useParams();
@@ -60,6 +61,9 @@ const VendorDetail = () => {
       
       <main className="py-20">
         <div className="container mx-auto px-4">
+          <div className="mb-6">
+            <BackButton to="/marketplace" label="Back to Marketplace" />
+          </div>
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
             <Link to="/" className="hover:text-primary">Home</Link>

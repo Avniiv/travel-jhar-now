@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Calendar, Users, MapPin, Star, ArrowLeft, ArrowRight, Check, CreditCard, Download, Share } from 'lucide-react';
 import { destinations, hotels, guides, vendors } from '@/data/mockData';
+import { BackButton } from '@/components/BackButton';
 
 const BookingFlow = () => {
   const { type, id } = useParams();
@@ -392,6 +393,9 @@ const BookingFlow = () => {
       
       <main className="py-20">
         <div className="container mx-auto px-4">
+          <div className="mb-6">
+            <BackButton />
+          </div>
           {/* Progress Steps */}
           <div className="flex items-center justify-center mb-8">
             {[1, 2, 3].map((stepNum) => (

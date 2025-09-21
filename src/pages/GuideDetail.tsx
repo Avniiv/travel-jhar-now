@@ -9,6 +9,7 @@ import { Separator } from '@/components/ui/separator';
 import { Calendar } from '@/components/ui/calendar';
 import { MapPin, Star, Languages, Award, Calendar as CalendarIcon, Heart, Share2, Phone, Mail, CheckCircle } from 'lucide-react';
 import { guides, reviews } from '@/data/mockData';
+import { BackButton } from '@/components/BackButton';
 
 const GuideDetail = () => {
   const { id } = useParams();
@@ -41,6 +42,9 @@ const GuideDetail = () => {
       
       <main className="py-20">
         <div className="container mx-auto px-4">
+          <div className="mb-6">
+            <BackButton to="/search?type=guides" label="Back to Guides" />
+          </div>
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
             <Link to="/" className="hover:text-primary">Home</Link>

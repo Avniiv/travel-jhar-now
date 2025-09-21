@@ -20,6 +20,8 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import BookingFlow from "./pages/BookingFlow";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +65,8 @@ const App = () => (
           {/* Dashboard */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
